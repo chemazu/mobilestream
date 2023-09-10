@@ -4,7 +4,7 @@ import Peer from "peerjs";
 import { MediaPlayer, MediaOutlet, MediaCommunitySkin } from "@vidstack/react";
 
 export default function Stream() {
-  let [one, setOne] = useState("");
+  let [one, setOne] = useState("https://stream.mux.com/VZtzUzGRv02OhRnZCxcNg49OilvolTqdnFLEqBsTwaxU/low.mp4");
   let [screensharingStatus, setScreensharingStatus] = useState();
 
   const socket = io("http://localhost:5000");
