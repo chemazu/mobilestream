@@ -1,0 +1,26 @@
+{
+  "name": "mobilestreamapp",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "type": "module",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "dev":"nodemon index.js"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  
+  "dependencies": {
+    "@vidstack/react": "^0.6.13",
+    "express": "^4.18.2",
+    "react-router-dom": "^6.15.0",
+    "socket.io": "^4.7.2",
+    "vidstack": "^0.6.13"
+  },
+  "field": {
+    "type": "module"
+  }
+  
+}
