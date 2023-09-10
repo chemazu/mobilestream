@@ -77,6 +77,7 @@ export default function Watch() {
         autoplay={true}
         crossorigin=""
         src={one}
+        playsinline={true}
       >
         <MediaOutlet>
           {/* Add any additional tracks or configurations here */}
