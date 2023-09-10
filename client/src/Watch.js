@@ -12,8 +12,7 @@ import {
   MediaPoster,
 } from "@vidstack/react";
 export default function Watch() {
-  // const socket = io("http://localhost:5000");
-  const socket = io("");
+  const socket = io("http://localhost:5000");
 
   const myVideoRef = useRef();
   let [one, setOne] = useState("https://stream.mux.com/VZtzUzGRv02OhRnZCxcNg49OilvolTqdnFLEqBsTwaxU/low.mp4");
