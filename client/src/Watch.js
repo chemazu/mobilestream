@@ -12,18 +12,15 @@ import {
   MediaPoster,
 } from "@vidstack/react";
 export default function Watch() {
-  const socket = io("http://localhost:5000");
+  // const socket = io("http://localhost:5000");
+  const socket = io("");
+
   const myVideoRef = useRef();
   let [one, setOne] = useState("https://stream.mux.com/VZtzUzGRv02OhRnZCxcNg49OilvolTqdnFLEqBsTwaxU/low.mp4");
 
   let roomid = 1;
   const peerRef = useRef();
-  function addVideoStream(video, stream) {
-    video.srcObject = stream;
-    video.addEventListener("loadedmetadata", () => {
-      video.play();
-    });
-  }
+ 
 
   useEffect(() => {
     const peerInstance = new Peer();

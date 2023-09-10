@@ -7,7 +7,9 @@ export default function Stream() {
   let [one, setOne] = useState("https://stream.mux.com/VZtzUzGRv02OhRnZCxcNg49OilvolTqdnFLEqBsTwaxU/low.mp4");
   let [screensharingStatus, setScreensharingStatus] = useState();
 
-  const socket = io("http://localhost:5000");
+  // const socket = io("http://localhost:5000");
+  const socket = io("");
+
   const myVideoRef = useRef();
 
   let roomid = 1;
