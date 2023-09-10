@@ -15,12 +15,10 @@ export default function Watch() {
   const socket = io("http://localhost:5000");
 
   const myVideoRef = useRef();
-  let [one, setOne] = useState(
-""    );
+  let [one, setOne] = useState("");
 
   let roomid = 1;
   const peerRef = useRef();
- 
 
   useEffect(() => {
     const peerInstance = new Peer();
@@ -49,9 +47,9 @@ export default function Watch() {
     socket.on("no stream", () => {
       console.log("no stream");
     });
-    socket.on("startScreenSharing",(status,peerId)=>{
+    socket.on("startScreenSharing", (status, peerId) => {
       startClass(peerId, "share");
-    })
+    });
     socket.on("broadcaster", ({ peerId, socketId }) => {
       startClass(peerId, "broadcaster");
       console.log("broadcaster");
@@ -62,23 +60,20 @@ export default function Watch() {
       socket.off("join stream");
       socket.off("broadcaster");
     };
-  }, [roomid]);
+  }, []);
   return (
     <div>
       {" "}
       <MediaPlayer
         title="Tuturly Classroom"
-        poster="https://image.mux.com/VZtzUzGRv02OhRnZCxcNg49OilvolTqdnFLEqBsTwaxU/thumbnail.webp?time=268&width=980"
-        thumbnails="https://media-files.vidstack.io/sprite-fight/thumbnails.vtt"
-        aspectRatio={16 / 9}
-        autoplay={true}
-        crossorigin=""
+        poster="https://media-files.vidstack.io/poster.png"
+        controls
         src={one}
+        autoplay={true}
+
         playsinline={true}
       >
-        <MediaOutlet>
-          {/* Add any additional tracks or configurations here */}
-        </MediaOutlet>
+        <MediaOutlet/>
         <MediaCommunitySkin />
       </MediaPlayer>
     </div>

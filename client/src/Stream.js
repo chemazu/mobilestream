@@ -90,14 +90,14 @@ export default function Stream() {
         thumbnails="https://media-files.vidstack.io/sprite-fight/thumbnails.vtt"
         aspectRatio={16 / 9}
         autoplay={true}
-        crossorigin=""
+       
         src={one}
         playsinline={true}
 
       >
-        <MediaOutlet>
-          {/* Add any additional tracks or configurations here */}
-        </MediaOutlet>
+        <MediaOutlet/>
+      
+       
         <MediaCommunitySkin />
       </MediaPlayer>
       <button
