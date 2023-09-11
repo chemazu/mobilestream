@@ -40,9 +40,9 @@ export default function Watch() {
           });
         });
     };
-    socket.on("join stream", (roomSize, peerId, roomStatus) => {
-      startClass(peerId, "join");
-    });
+    // socket.on("join stream", (roomSize, peerId, roomStatus) => {
+    //   startClass(peerId, "join");
+    // });
 
     socket.on("no stream", () => {
       console.log("no stream");
@@ -70,7 +70,6 @@ export default function Watch() {
         controls
         src={one}
         autoplay={true}
-
         playsinline={true}
       >
         <MediaOutlet/>
