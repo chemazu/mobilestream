@@ -8,12 +8,23 @@ function App() {
   return (
     <div className="App">
       <Routes>
-        <Route path="/stream" element={<Stream />} />
-        <Route path="/watch" element={<Watch />} />
+        <Route path="/stream/:id" element={<Stream />} />
+        <Route path="/watch/:id" element={<Watch />} />
       </Routes>
-      <Link to ="/stream">Stream</Link>
-      <Link to ="/watch">Watch</Link>
 
+      <div
+        style={{
+          display: "flex",
+          flexDirection: "column",
+        }}
+      >
+        <Link to="/stream/1">Stream Channel 1</Link>
+        <Link to="/watch/1">Watch Channel 1</Link>
+        <Link to="/stream/2">Stream Channel 2</Link>
+        <Link to="/watch/2">Watch Channel 2</Link>
+        <Link to="/stream/3">Stream Channel 3</Link>
+        <Link to="/watch/3">Watch Channel 3</Link>
+      </div>
     </div>
   );
 }

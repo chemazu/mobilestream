@@ -12,20 +12,26 @@ import {
   MediaPlayer,
   MediaPoster,
 } from "@vidstack/react";
+
 export default function Watch() {
   const socket = io("http://localhost:5000");
 
   const myVideoRef = useRef();
-  let [one, setOne] = useState("");
+  const [remoteStream, setRemoteStream] = useState(null);
 
-  let { id } = useParams();
-  let roomid = id;
-  console.log(roomid);
+  const { id } = useParams();
+  const roomid = id;
+
   const peerRef = useRef();
 
   useEffect(() => {
-    const peerInstance = new Peer();
-    peerRef.current = peerInstance;
+    let peerInstance = peerRef.current;
+
+    if (!peerInstance) {
+      peerInstance = new Peer();
+      peerRef.current = peerInstance;
+    }
+
     peerInstance.on("open", (user) => {
       socket.emit("watcher", roomid, user);
     });
@@ -38,10 +44,14 @@ export default function Watch() {
           const call = peerInstance?.call(peerId, newStream);
           call?.on("stream", function (remoteStream) {
             console.log(remoteStream);
-            setOne(remoteStream);
+            setRemoteStream(remoteStream);
           });
+        })
+        .catch((error) => {
+          console.error("Error getting user media:", error);
         });
     };
+
     socket.on("join stream", (roomSize, peerId, roomStatus) => {
       startClass(peerId, "join");
     });
@@ -49,15 +59,19 @@ export default function Watch() {
     socket.on("no stream", () => {
       console.log("no stream");
     });
+
     socket.on("startScreenSharing", (status, peerId) => {
       startClass(peerId, "share");
     });
+
     socket.on("broadcaster", (peerId) => {
       startClass(peerId, "broadcaster");
       console.log("broadcaster");
     });
-    socket.on("broadcaster-disconnected",()=>{
-          })
+
+    socket.on("broadcaster-disconnected", () => {
+      // Handle broadcaster disconnection
+    });
 
     return () => {
       peerInstance.destroy();
@@ -65,14 +79,14 @@ export default function Watch() {
       socket.off("broadcaster");
     };
   }, [roomid]);
+
   return (
     <div>
-      {" "}
       <MediaPlayer
         title="Tuturly Classroom"
         poster="https://media-files.vidstack.io/poster.png"
         controls
-        src={one}
+        src={remoteStream}
         autoplay={true}
         playsinline={true}
       >

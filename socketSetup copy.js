@@ -30,7 +30,6 @@ const setupSocketIO = (app) => {
       const room = io.sockets.adapter.rooms.get(roomId);
       let roomSize = room ? room.size : 1;
       console.log("watcher in");
-      console.log(newBroadcasterHolder)
       // check screensharing
       if (newBroadcasterHolder[roomId]) {
         io.to(socket.id).emit(
