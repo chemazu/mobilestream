@@ -9,7 +9,8 @@ export default function Stream() {
 
   let [screensharingStatus, setScreensharingStatus] = useState();
 
-  const socket = io("http://localhost:5000");
+  // const socket = io("http://localhost:5000");
+  const socket = io();
   // const socket = io("");
 
   const myVideoRef = useRef();

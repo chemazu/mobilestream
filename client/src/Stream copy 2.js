@@ -5,7 +5,9 @@ import { MediaPlayer, MediaOutlet, MediaCommunitySkin } from "@vidstack/react";
 import { useParams } from "react-router-dom";
 
 export default function Stream() {
-  const socket = io("http://localhost:5000");
+  // const socket = io("http://localhost:5000");
+  const socket = io();
+
   const myVideoRef = useRef();
   const { id } = useParams();
   const roomid = id;

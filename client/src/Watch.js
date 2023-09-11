@@ -13,7 +13,8 @@ import {
   MediaPoster,
 } from "@vidstack/react";
 export default function Watch() {
-  const socket = io("http://localhost:5000");
+  // const socket = io("http://localhost:5000");
+  const socket = io();
 
   const myVideoRef = useRef();
   let [one, setOne] = useState("");
@@ -56,8 +57,7 @@ export default function Watch() {
       startClass(peerId, "broadcaster");
       console.log("broadcaster");
     });
-    socket.on("broadcaster-disconnected",()=>{
-          })
+    socket.on("broadcaster-disconnected", () => {});
 
     return () => {
       peerInstance.destroy();
